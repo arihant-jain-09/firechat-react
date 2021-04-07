@@ -4,13 +4,13 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 firebase.initializeApp({
-  apiKey: "AIzaSyBWZC9xWMKEQMuGPyncAFlaVGnHlNwnEDY",
-    authDomain: "superchat-33ed4.firebaseapp.com",
-    projectId: "superchat-33ed4",
-    storageBucket: "superchat-33ed4.appspot.com",
-    messagingSenderId: "305060583764",
-    appId: "1:305060583764:web:f11e117b65ec65e718d0c1",
-    measurementId: "G-45GES8K7BV"
+  apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
 })
 const firestore=firebase.firestore();
 const auth=firebase.auth();
