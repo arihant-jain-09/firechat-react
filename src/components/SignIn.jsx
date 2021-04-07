@@ -3,10 +3,10 @@ import {makeStyles,Button} from '@material-ui/core'
 const useStyles = makeStyles((theme)=>{
   return{
     maindiv:{
-      backgroundColor:"#82b1ff"
+      backgroundColor:"#282c34"
     },
     div:{
-      backgroundColor:"#82b1ff",
+      backgroundColor:"#282c34",
       width:'100%',
       height:'500px'
     },

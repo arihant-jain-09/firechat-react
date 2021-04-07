@@ -4,12 +4,10 @@ const useStyles=makeStyles((theme)=>{
   return{
     card:{
       height:theme.spacing(5),
-
       borderRadius:theme.spacing(0)
     },
     cardHeader:{
       height:theme.spacing(1.1),
-
       position:'relative',
       left:(props)=>{
         if(props.messageClass==="sent"){
@@ -29,7 +27,7 @@ const useStyles=makeStyles((theme)=>{
     cardheadtypo:{
       color:theme.palette.secondary.contrastText,
       // borderRadius:"16px 2px 2px 16px" ,
-      borderRadius:"16px" ,
+      borderRadius:theme.spacing(2),
       padding: theme.spacing(1),
       paddingLeft:theme.spacing(2.2),
       backgroundColor:(props)=>{

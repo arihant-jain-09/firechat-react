@@ -17,10 +17,10 @@ const useStyles=makeStyles((theme)=>{
       width:"70%",
       marginLeft:"auto",
       marginRight:"auto",
-      
     },
     typography:{
-      flexGrow:1
+      flexGrow:1,
+      letterSpacing:'2px',
     }
   }
 })
