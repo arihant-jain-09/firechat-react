@@ -1,3 +1,4 @@
+import React,{useState} from 'react'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -19,11 +20,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src='Added_a_document.png' width="500" height="500"/>
+        {/* <img src='Added_a_document.png' width="500" height="500"/> */}
       </header>
       <section>
       {user?<ChatRoom/>:<SignIn/>}
-      {console.log(user)}
+      {console.log(auth.currentUser)}
       {/* {when the user is logged in we can capture image of his gmail photo using user object which has photoURL} */}
       {/* {auth which comes from firebase/auth has access to currentUser so we can check if user is logged in or not} */}
     </section>
@@ -56,20 +57,40 @@ const query=messageRef.orderBy('createdAt').limit(25);
 //options takes an Object idField to give id parameter to each message
 const [messages]=useCollectionData(query,{idField:'id'});
 //it returns an object where each object is the chat message in database
+const [formValue,setformValue]=useState('');
+//after user press Submit forms calls sendMessage
+const sendMessage=async (e)=>{
+  e.preventDefault();
+  const {uid,photoURL}=auth.currentUser;
+  //to add data just use .add method which takes an object
+  await messageRef.add({
+    text:formValue,
+    createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+    uid,
+    photoURL
+  })
+  setformValue('');
+}
 return(
   <>
     <div>
       {/* if messages then only map */}
       {messages && messages.map((msg)=><ChatMessage key={msg.id} id={msg.id} message={msg}/>)}
     </div>
+    <form onSubmit={sendMessage}>
+      <input value={formValue} onChange={(e)=>setformValue(e.target.value)}/>
+      <button type="submit">Submit</button>
+    </form>
   </>
 )
 }
 function  ChatMessage  (props){
-  const {text}=props.message;
-console.log(props.message);
+  const {text,uid,photoURL}=props.message;
+  const messageClass=uid === auth.currentUser.uid?'sent':'received';
 return(
-  <div><p>{text}</p>
+  <div className={`message ${messageClass}`}>
+  <img src={photoURL} alt="photourl" />
+    <p>{text}</p>
 </div>
 )
 }
