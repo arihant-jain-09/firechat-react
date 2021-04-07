@@ -12,6 +12,15 @@ const useStyles=makeStyles((theme)=>{
       padding:'5px',
       width:'92%'
     },
+    input:{
+      backgroundColor:"white"
+    },
+    btn:{
+      height:'42px',
+      "&:hover":{
+        backgroundColor:"#506999"
+      }
+    }
   }
 })
 
@@ -49,8 +58,8 @@ return(
       <div ref={dummy}></div>
     </main>
     <form onSubmit={sendMessage}  >
-      <Input autoFocus fullWidth classes={{fullWidth:classes.text}} required placeholder="Enter your message" onChange={(e)=>setformValue(e.target.value)} value={formValue} />
-      <Button size="large" type="submit"><SendIcon style={{ fontSize: 32 }}/></Button>
+      <Input className={classes.input} autoFocus fullWidth classes={{fullWidth:classes.text}} required placeholder="Enter your message" onChange={(e)=>setformValue(e.target.value)} value={formValue} />
+      <Button className={classes.btn}  type="submit"><SendIcon style={{ fontSize: 32 }}/></Button>
 
     </form>
   </>
